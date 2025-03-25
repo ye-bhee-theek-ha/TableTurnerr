@@ -1,103 +1,216 @@
+import {AnimatedCTAButton_LoggedIn, AnimatedCTAButton_LoggedOut} from "@/components/CTA_header_btn";
+import Header from "@/components/Header";
+import { AnimatedMenuButton } from "@/components/Menu_Header_btn";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+import placeholderImg from "@/../public/Images/Product img 1.png";
+import pattern from "@/../public/Svgs/BG Pattern.svg";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+import ThemeButton from "@/components/ThemeBtn";
+import Home_menu_section from "@/components/Home_menu_section";
+import PromotionalBanner from "@/components/Home_promotional_banner";
+import Reviews from "@/components/Reviews";
+import FAQSection from "@/components/FAQ_section";
+import LocationComponent from "@/components/OurLocation";
+
+
+export default function Home() {
+
+  const locationData = {
+    title: "Beretania, Honolulu",
+    subtitle: "Seasons Taiwanese Eatery",
+    address: {
+      street: "100 N Beretania St #109",
+      city: "Honolulu",
+      state: "HI",
+      zip: "96817"
+    },
+
+    mapQuery: "100 N Beretania St #109, Honolulu, HI 96817",
+    
+    contact: {
+      phone: "808-744-0272",
+      email: "contact@seasonseateryhi.com"
+    },
+
+    openingTime: "11:00 AM PDT",
+
+    actionLinkDirections: {
+      text: "Get Directions",
+      url: "https://maps.google.com/?q=Seasons Tiwanese Eatery, 100 N Beretania St #109, Honolulu, HI 96817"
+    },
+
+    actionLinkContact: {
+      text: "Contact",
+      url: "https://maps.google.com/?q=Seasons Tiwanese Eatery, 100 N Beretania St #109, Honolulu, HI 96817"
+    },
+
+    hours: [
+      { day: "Monday", hours: "10:30 AM - 3:00 PM" },
+      { day: "Tuesday", hours: "10:30 AM - 3:00 PM" },
+      { day: "Wednesday", hours: "10:30 AM - 3:00 PM" },
+      { day: "Thursday", hours: "10:30 AM - 3:00 PM" },
+      { day: "Friday", hours: "10:30 AM - 3:00 PM" },
+      { day: "Saturday", hours: "10:30 AM - 3:00 PM" },
+      { day: "Sunday", hours: "4:30 PM - 9:00 PM" }
+    ]
+  };
+
+
+  return (
+    <div className="p-[10px]">
+      <Header />
+
+      <div className="h-[40px]" />
+
+      {/* hero img section */}
+      <div className="h-[600px] w-full overflow-hidden rounded-[36px] relative">
+        <div className="p-[80px] h-full">
+          <div className="text-white text-normal3 font-bold border-l-3 border-white pl-[20px]">
+            Best Taiwanese food in Honolulu
+          </div>
+
+          <div className="text-white text-h1 font-medium ">
+            Savor the Best
+            <br />
+            Taiwanese Food in
+            <br />
+            Honolulu –
+            <br />
+            Authentic and Flavorful!
+          </div>
+
+          {/* TODO make seperate component */}
+          {/* <div className="rounded-[9px] min-w-[157px] min-h-[41px] w-fit overflow-hidden flex bg-primary items-center">
+            <div className="text-nowrap text-normal2 font-bold text-white mx-auto h-full flex items-center justify-center">
+              Order Now
+            </div>
+            <div className='flex justify-end m-[5px]'>
+							<div className="w-[31px] h-[31px] bg-white/15 rounded-[7px] flex items-center justify-center">
+								<svg className="w-6 h-6 text-white -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+								</svg>
+							</div>
+						</div>
+          </div> */}
+
+          <ThemeButton />
+
+          <Image
+            src={placeholderImg}
+            alt="Placeholder Image"
+            className="absolute top-0 left-0 w-full h-full object-cover rounded-[36px] -z-10"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </div>
+
+      <div className="h-[100px]" />
+
+      {/* section 2 */}
+      <div className="w-full flex items-center justify-center text-center flex-col">
+        <div className="text-h2 text-black w-full">
+          Try our most popular items
+        </div>
+        <div className="text-normal text-grey mt-[20px]">
+          Treat yourself to our must-try list that has everyone talking
+        </div>
+        <div className="mt-[20px]">
+          <ThemeButton
+            text="View Full Menu"
+            textClassname="pr-[8px] pl-[14px]"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </div>
+      </div>
+
+      <div className="h-[100px]" />
+
+      {/* Menu Section */}
+
+      <div>
+        <Home_menu_section />
+      </div>
+
+      <div className="h-[100px]" />
+
+      {/* promotion banner */}
+      <div>
+        <PromotionalBanner
+          image="Product img 2.png"
+          title="Order From Our Website"
+          description="Order directly from our website to save money in fees, get faster service, earn free food via our rewards program, and support local business."
+          buttonText="Order Now"
+          buttonUrl="/order"
+        />
+      </div>
+
+      <div className="h-[100px]" />
+
+      {/* reviews */}
+      {/* <div className="relative"
+        style={{
+          overflow: "hidden",
+          height: '644px',
+          alignSelf: "stretch",
+          borderRadius: "36px",
+          background: "var(--Site-Black-10, rgba(13, 13, 13, 0.10))",
+        }}
+      >
+        <div className="absolute h-full w-full">
           <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            src={pattern}
+            alt="bg pattern"
+            fill
+            className="object-cover"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        </div>
+        
+        <div
+          style={{
+            display: 'flex',
+            width: '',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '42px',
+          }}
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+          <div>
+            <div className="text-h2 w-full text-center font-medium">
+              What our customers are
+              <br />
+              saying
+            </div>
+
+            <div className="text-normal1 w-full text-center font-medium mt-[20px]">
+              Check out our most recent reviews!
+            </div>
+          </div>
+
+          
+
+
+
+        </div>
+
+      </div> */}
+      <Reviews />
+
+      <div className="h-[100px]" />
+      {/* FAQ */}
+      <FAQSection />
+
+
+      <div className="h-[100px]" />
+      {/* OUR LOCATION */}
+      <LocationComponent
+        {...locationData}
+      />
+      
+
+      <div className="h-[100px]" />
+      {/* FOOTER */}
+
+
     </div>
   );
 }

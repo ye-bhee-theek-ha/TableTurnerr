@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "CretoDispay";
+  src: url("@/../../../public/Fonts/CreatoDisplay-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --color-primary-dark: #621E21;
+  --color-primary: #B00C13;
+  --color-black: #0D0D0D;
+  --color-grey: #4D4D4D;
+  --color-alert-green-dark: #8FB378;
+  --color-alert-green: #CAE9B7;
+  --color-alert-green-light: #EDFFE1;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --text-h1: 68px;
+  --text-h2: 56px;
+  --text-h3: 48px;
+  --text-h4: 36px;
+  --text-h5: 22px;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --text-normal1: 20px;
+  --text-normal2: 18px;
+  --text-normal3: 16px;
+  --text-normal4: 14px;
+
+  --leading-lh24: 24px;
+
+  --font-normal: 400;
+  --font-bold: 700;
+  --font-extra-bold: 800;
+
+  --font-*:initial;
+  --default-font-family:"CretoDispay";
+
 }
