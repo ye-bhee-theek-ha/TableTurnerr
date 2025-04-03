@@ -1,11 +1,28 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from 'react'
 import { AnimatedMenuButton } from './Menu_Header_btn'
-import { AnimatedCTAButton_LoggedOut } from './CTA_header_btn'
+import { AnimatedCTAButton_LoggedIn, AnimatedCTAButton_LoggedOut } from './CTA_header_btn'
+import useAuth from '../hooks/useAuth';
+import AuthModal from './Auth/AuthForm';
+
 
 function Header() {
+
+  const { isLoggedIn, loading } = useAuth();
+
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authModalMode, setAuthModalMode] = useState<'login' | 'signup'>('login');
+  
+  const handleSignInClick = () => {
+    setAuthModalMode('login');
+    setIsAuthModalOpen(true);
+  };
+
+
   return (
     <div className="p-[20px] w-full">
-      {/* <AnimatedCTAButton_LoggedIn alerts={3} /> */}
+      
       <div className="w-full grid grid-cols-3 items-center">
       
         {/* Left Section */}
@@ -22,12 +39,28 @@ function Header() {
 
         {/* Center Section (Always Centered) */}
         <div className="flex justify-center">
-          <div className="h-[50px] w-[50px] bg-grey"></div>
+          <div className="h-[50px] w-[50px] bg-grey text-white">
+            {loading? "Loading..." : "loaded"}
+
+          </div>
         </div>
 
         {/* Right Section */}
         <div className="flex justify-end">
-          <AnimatedCTAButton_LoggedOut />
+          {loading ? 
+            "header.tsx" 
+            :
+            isLoggedIn ? 
+              <AnimatedCTAButton_LoggedIn cart_alerts={3}/>
+               : 
+              <AnimatedCTAButton_LoggedOut onSignInClick={handleSignInClick} />
+          }
+          {isAuthModalOpen && <AuthModal 
+            isOpen={isAuthModalOpen}
+            onClose={() => setIsAuthModalOpen(false)}
+            initialMode='login'
+            key={isAuthModalOpen ? 'login' : 'signup'}
+          />}
         </div>
       </div>
     </div>

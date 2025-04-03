@@ -2,13 +2,6 @@
 
 import React, { use } from 'react';
 
-interface Address {
-  street: string;
-  city: string;
-  state: string;
-  zip: string;
-}
-
 interface Contact {
   phone: string;
   email: string;
@@ -22,7 +15,6 @@ interface Hours {
 interface LocationProps {
   title: string;
   subtitle?: string;
-  address: Address;
   mapQuery: string;
   contact?: Contact;
   hours?: Hours[];
@@ -40,7 +32,6 @@ interface LocationProps {
 const LocationComponent: React.FC<LocationProps> = ({
   title,
   subtitle,
-  address,
   mapQuery,
   contact,
   hours,

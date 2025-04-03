@@ -5,8 +5,12 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 import cart from '@/../public/Svgs/Cart icon.svg'
+import UserProfile from './UserProfile';
+interface AnimatedCTAButtonProps {
+  onSignInClick: () => void;
+}
 
-export const AnimatedCTAButton_LoggedOut = () => {
+export const AnimatedCTAButton_LoggedOut:React.FC<AnimatedCTAButtonProps> = ({ onSignInClick }) => {
   const [hoveredButton, setHoveredButton] = useState<'left' | 'right' | null>(null);
   
   return (
@@ -29,6 +33,7 @@ export const AnimatedCTAButton_LoggedOut = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           onMouseEnter={() => setHoveredButton('left')}
           onMouseLeave={() => setHoveredButton(null)}
+          onClick={onSignInClick}
         >
           <div className="flex items-center justify-between w-full">
 						<motion.div className='overflow-hidden text-nowrap text-normal2 font-bold text-grey mx-auto'
@@ -89,27 +94,33 @@ export const AnimatedCTAButton_LoggedOut = () => {
   );
 };
 
-export const AnimatedCTAButton_LoggedIn = ({alerts}: {alerts: number}) => {
+export const AnimatedCTAButton_LoggedIn = ({cart_alerts}: {cart_alerts: number }) => {
   
   return (
     <div className="flex justify-center items-center w-[271px] h-[41px]">
       <div className="relative w-full max-w-lg h-full flex flex-row">
 
-        {/* Left Button */}
-        <div className='h-full w-1/2 flex justify-center relative'>
-          <Image
-            src={cart}
-            alt='cart icon'
-            width={31}
-            height={31}
-          />
-          {alerts > 0 && (
-            <div className='bg-black rounded-full h-[18px] w-[18px] absolute top-[18px] right-[48px] border-2 border-white'>
-              <div className='text-white justify-center flex text-[10px] font-bold z-20'>
-                {alerts}
+        {/* Left Buttons */}
+        <div>
+          <div className='h-full flex justify-center relative'>
+            <Image
+              src={cart}
+              alt='cart icon'
+              width={31}
+              height={31}
+            />
+            {cart_alerts > 0 && (
+              <div className='bg-black rounded-full h-[18px] w-[18px] absolute top-[18px] right-[48px] border-2 border-white'>
+                <div className='text-white justify-center flex text-[10px] font-bold z-20'>
+                  {cart_alerts}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
+
+          <div>
+            <UserProfile />
+          </div>
         </div>
 
         {/* Right Button */}

@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 
-import star from '@/../public/Svgs/Star.svg';
 import placeholderImg from "@/../public/Images/menu.png";
 
 // Define types

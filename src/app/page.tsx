@@ -1,10 +1,9 @@
-import {AnimatedCTAButton_LoggedIn, AnimatedCTAButton_LoggedOut} from "@/components/CTA_header_btn";
+"use client";
+
 import Header from "@/components/Header";
-import { AnimatedMenuButton } from "@/components/Menu_Header_btn";
 import Image from "next/image";
 
 import placeholderImg from "@/../public/Images/Product img 1.png";
-import pattern from "@/../public/Svgs/BG Pattern.svg";
 
 import ThemeButton from "@/components/ThemeBtn";
 import Home_menu_section from "@/components/Home_menu_section";
@@ -19,13 +18,7 @@ export default function Home() {
   const locationData = {
     title: "Beretania, Honolulu",
     subtitle: "Seasons Taiwanese Eatery",
-    address: {
-      street: "100 N Beretania St #109",
-      city: "Honolulu",
-      state: "HI",
-      zip: "96817"
-    },
-
+   
     mapQuery: "100 N Beretania St #109, Honolulu, HI 96817",
     
     contact: {
