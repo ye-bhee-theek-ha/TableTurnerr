@@ -39,7 +39,7 @@ const MenuCards: React.FC<MenuCardsProps> = ({
         {items.map((item) => (
           <div 
             key={item.id} 
-            className="flex flex-row bg-white min-h-[210px] rounded-[12px] border border-black/[0.03]"
+            className="flex flex-row min-h-[210px] rounded-[12px] border border-black/[0.03] bg-black/[0.01] hover:bg-black/[0.03] transition-colors"
             style={{
               padding: '12px 16px 16px 12px',
             }}

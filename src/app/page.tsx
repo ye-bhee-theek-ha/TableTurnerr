@@ -15,39 +15,39 @@ import LocationComponent from "@/components/OurLocation";
 
 export default function Home() {
 
-  const locationData = {
-    title: "Beretania, Honolulu",
-    subtitle: "Seasons Taiwanese Eatery",
+  // const locationData = {
+  //   title: "Beretania, Honolulu",
+  //   subtitle: "Seasons Taiwanese Eatery",
    
-    mapQuery: "100 N Beretania St #109, Honolulu, HI 96817",
+  //   mapQuery: "100 N Beretania St #109, Honolulu, HI 96817",
     
-    contact: {
-      phone: "808-744-0272",
-      email: "contact@seasonseateryhi.com"
-    },
+  //   contact: {
+  //     phone: "808-744-0272",
+  //     email: "contact@seasonseateryhi.com"
+  //   },
 
-    openingTime: "11:00 AM PDT",
+  //   openingTime: "11:00 AM PDT",
 
-    actionLinkDirections: {
-      text: "Get Directions",
-      url: "https://maps.google.com/?q=Seasons Tiwanese Eatery, 100 N Beretania St #109, Honolulu, HI 96817"
-    },
+  //   actionLinkDirections: {
+  //     text: "Get Directions",
+  //     url: "https://maps.google.com/?q=Seasons Tiwanese Eatery, 100 N Beretania St #109, Honolulu, HI 96817"
+  //   },
 
-    actionLinkContact: {
-      text: "Contact",
-      url: "https://maps.google.com/?q=Seasons Tiwanese Eatery, 100 N Beretania St #109, Honolulu, HI 96817"
-    },
+  //   actionLinkContact: {
+  //     text: "Contact",
+  //     url: "https://maps.google.com/?q=Seasons Tiwanese Eatery, 100 N Beretania St #109, Honolulu, HI 96817"
+  //   },
 
-    hours: [
-      { day: "Monday", hours: "10:30 AM - 3:00 PM" },
-      { day: "Tuesday", hours: "10:30 AM - 3:00 PM" },
-      { day: "Wednesday", hours: "10:30 AM - 3:00 PM" },
-      { day: "Thursday", hours: "10:30 AM - 3:00 PM" },
-      { day: "Friday", hours: "10:30 AM - 3:00 PM" },
-      { day: "Saturday", hours: "10:30 AM - 3:00 PM" },
-      { day: "Sunday", hours: "4:30 PM - 9:00 PM" }
-    ]
-  };
+  //   hours: [
+  //     { day: "Monday", hours: "10:30 AM - 3:00 PM" },
+  //     { day: "Tuesday", hours: "10:30 AM - 3:00 PM" },
+  //     { day: "Wednesday", hours: "10:30 AM - 3:00 PM" },
+  //     { day: "Thursday", hours: "10:30 AM - 3:00 PM" },
+  //     { day: "Friday", hours: "10:30 AM - 3:00 PM" },
+  //     { day: "Saturday", hours: "10:30 AM - 3:00 PM" },
+  //     { day: "Sunday", hours: "4:30 PM - 9:00 PM" }
+  //   ]
+  // };
 
 
   return (
@@ -195,9 +195,7 @@ export default function Home() {
 
       <div className="h-[100px]" />
       {/* OUR LOCATION */}
-      <LocationComponent
-        {...locationData}
-      />
+      <LocationComponent />
       
 
       <div className="h-[100px]" />
