@@ -2,23 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 
 import placeholderImg from "@/../public/Images/menu.png";
+import { MenuItem } from '@/constants/types';
 
 // Define types
-interface MenuItem {
-  id: string;
-  name: string;
-  image: string;
-  priceM: number;
-  priceL: number;
-  loyaltyPoints: number;
-  description: string;
-  tags: string[]; 
-  isFavorite?: boolean;
-}
-
 interface ScrollableMenuCardsProps {
-  title: string;
-  subtitle?: string;
   items: MenuItem[];
   onAddToCart: (itemId: string) => void;
   onToggleFavorite: (itemId: string) => void;
@@ -26,8 +13,6 @@ interface ScrollableMenuCardsProps {
 }
 
 const ScrollableMenuCards: React.FC<ScrollableMenuCardsProps> = ({
-  title,
-  subtitle,
   items,
   onAddToCart,
   onToggleFavorite,
@@ -78,15 +63,15 @@ const ScrollableMenuCards: React.FC<ScrollableMenuCardsProps> = ({
               
               {/* Price and Points */}
               <div className="flex mt-1 items-center">
-                <span className="text-normal4 text-primary-dark font-bold">{item.priceL && "M"} $ {item.priceM.toFixed(2)}</span>
+                <span className="text-normal4 text-primary-dark font-bold">{item.price}</span>
                 <div className='h-1 w-1 bg-black/40 rounded-full m-[6.5px]'></div>
                 
-                { item.priceL && item.priceL > 0 && item.priceM !== item.priceL &&
+                {/* { item.priceL && item.priceL > 0 && item.priceM !== item.priceL &&
                   <>
                     <span className="text-normal4 text-primary-dark font-bold">$ {item.priceL.toFixed(2)}</span>
                     <div className='h-1 w-1 bg-black/40 rounded-full m-[6.5px]'/>
                   </>
-                }
+                } */}
                 <span className="text-normal4 text-primary items-center">+ {item.loyaltyPoints} points</span>
               </div>
               

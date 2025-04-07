@@ -35,5 +35,12 @@
 
   --font-*:initial;
   --default-font-family:"CretoDispay";
+  --leading-normal: 1.2;
+}
 
+@layer base {
+  body {
+    line-height: 1.3;
+    font-weight: 500;
+  }
 }

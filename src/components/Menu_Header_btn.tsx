@@ -71,7 +71,7 @@ export function AnimatedMenuButton({ menuItems }: AnimatedMenuButtonProps) {
     <div className="flex flex-col items-center">
       {/* Button */}
       <button 
-        className="w-10 h-[14px] flex flex-col justify-evenly bg-transparent border-none cursor-pointer p-0 z-10"
+        className="w-10 h-[14px] flex flex-col justify-evenly bg-transparent border-none cursor-pointer p-0 z-100"
         onClick={toggleMenu}
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
@@ -91,7 +91,7 @@ export function AnimatedMenuButton({ menuItems }: AnimatedMenuButtonProps) {
 
       {/* Menu Items */}
       <motion.div
-        className="w-fit top-15 left-5  mt-2 absolute bg-white rounded-lg shadow-lg overflow-hidden"
+        className="w-fit top-15 left-5  mt-2 absolute bg-white rounded-lg shadow-lg overflow-hidden z-100"
         variants={menuVariants}
         initial="closed"
         animate={isOpen ? "open" : "closed"}

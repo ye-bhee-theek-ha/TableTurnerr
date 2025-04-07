@@ -29,7 +29,7 @@ export interface RestaurantInfo {
 
   catagories: {
     ids: string[];
-    names: string;
+    name: string;
   }[];
 
   info: {
@@ -57,11 +57,15 @@ export interface RestaurantInfo {
 // Menu Item Types
 
 export interface MenuItem {
+  id: string;
+  
   name: string;
   description?: string;
+  price?: string;
+  loyaltyPoints?: number;
   options: {
     IsExtra: boolean;
-    isRequired: boolean;
+    IsRequired: boolean;
     Question: string;
     subtext?: string;
 
@@ -69,10 +73,12 @@ export interface MenuItem {
       name: string;
       price: number;
     }[];
+  }[]
 
-    tags: string[];
-  }
+  tags: string[];
 
+  // app specific
+  isFavorite?: boolean;
 }
 
 

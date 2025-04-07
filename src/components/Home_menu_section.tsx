@@ -9,6 +9,9 @@ import arrow from '@/../public/Svgs/Arrow.svg';
 import ScrollableMenuCards from './Home_menu_card';
 
 import placeholderImg from "@/../public/Images/Product img 1.png";
+import { useSelector } from 'react-redux';
+import { selectCategories, selectMenuItems, selectPopularItems } from '@/lib/slices/restaurantSlice';
+import { RootState } from '@/lib/store/store';
 
 
 export default function Home_menu_section() {
@@ -85,20 +88,35 @@ export default function Home_menu_section() {
   ];
   
 
-      const handleAddToCart = (itemId: string) => {
-        console.log(`Added item ${itemId} to cart`);
-        // TODO: call to backend
+  const popularItems = useSelector(selectPopularItems);
+  // console.log("popularItems", popularItems)
+
+  // const MenuItems = useSelector(selectMenuItems);
+  // console.log("MenuItems", MenuItems)
+
+  // const categories = useSelector(selectCategories);
+  // console.log("categories", categories)
+
+  // const isLoading = useSelector((state: RootState) => 
+  //   state.restaurant.loading
+  // );
+  // console.log("isLoading", isLoading)
+
+
+  const handleAddToCart = (itemId: string) => {
+      console.log(`Added item ${itemId} to cart`);
+      // TODO: call to backend
+  };
+  
+    const handleToggleFavorite = (itemId: string) => {
+      console.log(`Toggled favorite for item ${itemId}`);
+      // TODO: call to backend
     };
-    
-      const handleToggleFavorite = (itemId: string) => {
-        console.log(`Toggled favorite for item ${itemId}`);
-        // TODO: call to backend
-      };
-    
-      const handleReadMore = (itemId: string) => {
-        console.log(`Read more about item ${itemId}`);
-        // TODO: call to backend
-      };
+  
+    const handleReadMore = (itemId: string) => {
+      console.log(`Read more about item ${itemId}`);
+      // TODO: call to backend
+    };
 
 
   return (
@@ -132,9 +150,7 @@ export default function Home_menu_section() {
 
 			<div className='overflow-x-hidden'>
 				<ScrollableMenuCards
-					title="Trending Taiwanese cuisine"
-					subtitle="Treat yourself to our must-try list that has everyone talking."
-					items={trendingItems}
+					items={popularItems}
 					onAddToCart={handleAddToCart}
 					onToggleFavorite={handleToggleFavorite}
 					onReadMore={handleReadMore}

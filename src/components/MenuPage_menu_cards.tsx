@@ -1,19 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import placeholderImg from "@/../public/Images/menu.png";
+import { MenuItem } from '@/constants/types';
 
 // Define types
-interface MenuItem {
-  id: string;
-  name: string;
-  image: string;
-  priceM: number;
-  priceL: number;
-  loyaltyPoints: number;
-  description: string;
-  tags: string[];
-  isFavorite?: boolean;
-}
 
 interface MenuCardsProps {
   title: string;
@@ -31,11 +21,11 @@ const MenuCards: React.FC<MenuCardsProps> = ({
   onReadMore
 }) => {
   return (
-    <div className="w-full bg-white px-4 py-2">
-      <h2 className="text-h4 text-black mb-4">{title}</h2>
+    <div className="w-full bg-white">
+      <h2 className="text-h4 text-black mb-[20px]">{title}</h2>
 
       {/* Menu Items Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 ml-[10px] gap-[10px]">
         {items.map((item) => (
           <div 
             key={item.id} 
@@ -55,36 +45,37 @@ const MenuCards: React.FC<MenuCardsProps> = ({
             </div>
 
             {/* Item Content */}
-            <div className="flex flex-col flex-grow pl-[10px] space-y-[10px]">
+            <div className="flex flex-col flex-grow pl-[10px] gap-y-[10px]">
+              <div>
+                {/* Title and Favorite */}
+                <div className="flex justify-between items-center">
+                  <div className="text-h5 font-bold">{item.name}</div>
+                  <button 
+                    onClick={() => onToggleFavorite(item.id)}
+                    aria-label="Toggle favorite"
+                    className='text-h5 text-primary'
+                  >
+                    {item.isFavorite? "★" : "☆"}
+                  </button>
+                </div>
 
-              {/* Title and Favorite */}
-              <div className="flex justify-between items-center">
-                <div className="text-h5 font-bold">{item.name}</div>
-                <button 
-                  onClick={() => onToggleFavorite(item.id)}
-                  aria-label="Toggle favorite"
-                  className='text-h5 text-primary'
-                >
-                   {item.isFavorite? "★" : "☆"}
-                </button>
-              </div>
-
-              {/* Price and Points */}
-              <div className="flex mt-1 items-center">
-                <span className="text-normal4 text-primary-dark font-bold">{item.priceL && "M"} $ {item.priceM.toFixed(2)}</span>
-                <div className='h-1 w-1 bg-black/40 rounded-full m-[5px]'></div>
-                
-                { item.priceL && item.priceL > 0 && item.priceM !== item.priceL &&
-                  <>
-                    <span className="text-normal4 text-primary-dark font-bold">$ {item.priceL.toFixed(2)}</span>
-                    <div className='h-1 w-1 bg-black/40 rounded-full m-[5px]'/>
-                  </>
-                }
-                <span className="text-normal4 text-primary items-center">+ {item.loyaltyPoints} points</span>
+                {/* Price and Points */}
+                <div className="flex mt-[2px] items-center">
+                  <span className="text-normal4 text-primary-dark font-bold">{item.price}</span>
+                  <div className='h-1 w-1 bg-black/40 rounded-full m-[5px]'></div>
+                  
+                  {/* { item.priceL && item.priceL > 0 && item.priceM !== item.priceL &&
+                    <>
+                      <span className="text-normal4 text-primary-dark font-bold">$ {item.priceL.toFixed(2)}</span>
+                      <div className='h-1 w-1 bg-black/40 rounded-full m-[5px]'/>
+                    </>
+                  } */}
+                  <span className="text-normal4 text-primary items-center">+ {item.loyaltyPoints} points</span>
+                </div>
               </div>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="flex flex-wrap gap-[2px]">
                 {item.tags.map((tag, idx) => (
                   <span 
                     key={idx} 

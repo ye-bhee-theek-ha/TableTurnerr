@@ -1,24 +1,68 @@
+// location component
+
 "use client";
 
-import { useAppDispatch } from '@/hooks/hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { 
+  getRestaurantData,
+  getAllMenuItems,
+  selectPopularItems,
+  selectCategories,
+  selectMenuItemsByCategoryName,
+  selectLoadingPriority,
+  selectMenuItems
+} from '@/lib/slices/restaurantSlice';
+
+import React from 'react';
 import { RootState } from '@/lib/store/store';
-import { i } from 'framer-motion/client';
-import React, { use } from 'react';
-import { useSelector } from 'react-redux';
 
 
 const LocationComponent = () => {
 
-  const {data, loading, error} = useSelector((state: RootState) => state.restaurant);
+  const loadingPriority = useSelector(selectLoadingPriority);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  const restaurantData = useSelector((state: RootState) => state.restaurant.data);
 
-  console.log("resturant data" ,data);
-  if (!data) return null;
+  // return (
+  //   <div className="mx-[70px]">
+  //     <h2 className="text-h2 mb-[32px]">Our Location</h2>
+  //     {loadingPriority}
+  //     <br />
+  //     <div className='w-full h-5 my-6 bg-alert-green'></div>
 
-  const resturantInfo = data.info;
-  const address = data.address;
+  //     {restaurantData ? JSON.stringify(restaurantData) : 'No restaurant data available'}
+  //     <br />
+  //     <div className='w-full h-5 my-6 bg-alert-green'></div>
+
+
+  //     <div className='text-h2 mb-[32px] bg-amber-200'>
+  //       popular items:
+  //     </div>
+
+  //     {popularItems ? JSON.stringify(popularItems) : 'No popular items available'}
+  //     <br />
+  //     <div className='w-full h-5 my-6 bg-alert-green'></div>
+
+  //     <div className='text-h2 mb-[32px] bg-amber-200'>
+  //       menu items:
+  //     </div>
+
+  //     {popularItems ? JSON.stringify(MenuItems) : 'No popular items available'}
+  //     <br />
+  //     <div className='w-full h-5 my-6 bg-alert-green'></div>
+
+  //     {categories ? JSON.stringify(categories) : 'No categories available'}
+  //     <br />
+  //     <div className='w-full h-5 my-6 bg-alert-green'></div>
+
+  //     {isLoading? JSON.stringify(isLoading) : 'No loading state available'}
+  //   </div>
+  // );
+
+  if (!restaurantData) return;
+
+  const resturantInfo = restaurantData.info;
+  const address = restaurantData.address;
 
   // Create the Google Maps embed URL
   const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
